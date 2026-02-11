@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airton | Galeria</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="Imagens/avatar.jpeg">
+</head>
+<body>
+
+<header class="topo">
+  <div class="perfil">
+    <img src="Imagens/avatar.jpeg" class="avatar-img" alt="Avatar">
+    <div class="perfil-info">
+      <h1>@airton</h1>
+      <p>Minha galeria pessoal ✨</p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="galeria">
+
+    <!-- POST 1 -->
+    <button class="post" data-id="eu" data-img="Imagens/eu.JPG" data-user="@airton"
+      data-local="Brasil" data-legenda="Eu 😎" data-data="11 Fev 2026" data-likes="128">
+      <img src="Imagens/eu.JPG">
+      <div class="overlay">
+        <div class="stats">
+          <span>❤️ <b>128</b></span>
+          <span>💬 <b class="cCount">0</b></span>
+        </div>
+      </div>
+    </button>
+
+    <!-- POST 2 -->
+    <button class="post" data-id="eu2" data-img="Imagens/eu2.JPG" data-user="@airton"
+      data-local="Brasil" data-legenda="Mais uma 🔥" data-data="11 Fev 2026" data-likes="92">
+      <img src="Imagens/eu2.JPG">
+      <div class="overlay">
+        <div class="stats">
+          <span>❤️ <b>92</b></span>
+          <span>💬 <b class="cCount">0</b></span>
+        </div>
+      </div>
+    </button>
+
+    <!-- POST 3 -->
+    <button class="post" data-id="manso" data-img="Imagens/manso.JPG" data-user="@airton"
+      data-local="Brasil" data-legenda="Modo manso 😂" data-data="10 Fev 2026" data-likes="210">
+      <img src="Imagens/manso.JPG">
+      <div class="overlay">
+        <div class="stats">
+          <span>❤️ <b>210</b></span>
+          <span>💬 <b class="cCount">0</b></span>
+        </div>
+      </div>
+    </button>
+
+    <!-- POST 4 -->
+    <button class="post" data-id="natal" data-img="Imagens/natal.JPG" data-user="@airton"
+      data-local="Brasil" data-legenda="Natal 🎄" data-data="25 Dez 2025" data-likes="340">
+      <img src="Imagens/natal.JPG">
+      <div class="overlay">
+        <div class="stats">
+          <span>❤️ <b>340</b></span>
+          <span>💬 <b class="cCount">0</b></span>
+        </div>
+      </div>
+    </button>
+
+    <!-- POST 5 -->
+    <button class="post" data-id="pascoa" data-img="Imagens/pascoa.JPG" data-user="@airton"
+      data-local="Brasil" data-legenda="Páscoa 🐰" data-data="31 Mar 2025" data-likes="180">
+      <img src="Imagens/pascoa.JPG">
+      <div class="overlay">
+        <div class="stats">
+          <span>❤️ <b>180</b></span>
+          <span>💬 <b class="cCount">0</b></span>
+        </div>
+      </div>
+    </button>
+
+  </section>
+</main>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="fechar" id="fechar">✕</button>
+
+    <div class="modal-img">
+      <img id="modalFoto">
+    </div>
+
+    <div class="modal-info">
+      <h3 id="modalUser"></h3>
+      <p id="modalLegenda"></p>
+      <p id="modalData"></p>
+
+      <div class="acoes">
+        <button id="btnLike">❤️</button>
+      </div>
+
+      <p><b id="modalLikes"></b> curtidas</p>
+    </div>
+  </div>
+</div>
+
+<script>
+const modal = document.getElementById("modal");
+const fechar = document.getElementById("fechar");
+
+const modalFoto = document.getElementById("modalFoto");
+const modalUser = document.getElementById("modalUser");
+const modalLegenda = document.getElementById("modalLegenda");
+const modalData = document.getElementById("modalData");
+const modalLikes = document.getElementById("modalLikes");
+
+document.querySelector(".galeria").addEventListener("click", function(e){
+  const post = e.target.closest(".post");
+  if(!post) return;
+
+  modalFoto.src = post.dataset.img;
+  modalUser.textContent = post.dataset.user;
+  modalLegenda.textContent = post.dataset.legenda;
+  modalData.textContent = post.dataset.data;
+  modalLikes.textContent = post.dataset.likes;
+
+  modal.style.display = "flex";
+});
+
+fechar.onclick = () => modal.style.display = "none";
+modal.onclick = (e) => { if(e.target === modal) modal.style.display = "none"; };
+</script>
+
+</body>
+</html>

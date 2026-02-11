@@ -1,0 +1,178 @@
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#0b0614;
+  color:#fff;
+}
+
+.topo{
+  padding:20px;
+  background:#12061f;
+}
+
+.perfil{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.avatar-img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.wrap{
+  max-width:1000px;
+  margin:auto;
+  padding:20px;
+}
+
+.galeria{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+
+.post{
+  border:none;
+  background:none;
+  cursor:pointer;
+  position:relative;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:10px;
+}
+
+.post img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.overlay{
+  pointer-events:none; /* 🔥 ISSO RESOLVE O BUG */
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.4);
+  opacity:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s;
+}
+
+.post:hover .overlay{
+  opacity:1;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  align-items:center;
+  justify-content:center;
+  padding: 20px;
+}
+
+.modal-box{
+  width: min(980px, 100%);
+  height: min(650px, 90vh);
+  background:#111;
+  border-radius:18px;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns: 1.4fr 1fr;
+  position:relative;
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+/* botão fechar melhor posicionado */
+.fechar{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:rgba(255,255,255,.12);
+  border:none;
+  color:#fff;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+/* imagem ocupa toda a área e centraliza */
+.modal-img{
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 100%;
+}
+
+.modal-img img{
+  width:100%;
+  height:100%;
+  object-fit: contain;   /* não distorce */
+  display:block;
+}
+
+/* painel da direita */
+.modal-info{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+
+/* texto */
+.modal-info h3{
+  margin:0;
+  font-size: 18px;
+}
+
+.modal-info p{
+  margin:0;
+  opacity:.9;
+  font-size: 14px;
+}
+
+/* botão like mais bonito */
+#btnLike{
+  margin-top: 8px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.08);
+  color:#fff;
+  cursor:pointer;
+}
+
+/* responsivo: no celular vira 1 coluna */
+@media (max-width: 780px){
+  .modal-box{
+    grid-template-columns: 1fr;
+    height: min(780px, 92vh);
+  }
+  .modal-info{
+    border-left: none;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+}
+
+.fechar{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:red;
+  border:none;
+  color:#fff;
+  padding:5px 10px;
+  cursor:pointer;
+}
